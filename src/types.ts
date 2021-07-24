@@ -1,4 +1,4 @@
-export interface Line {
+export interface ILine {
   lineNumber: number;
   lineText: string;
 }

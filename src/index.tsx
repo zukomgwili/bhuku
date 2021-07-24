@@ -1,14 +1,9 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-import './style.css';
-import Editor from './Editor';
+import React from "react";
+import { render } from "react-dom";
+import Editor from "./Editor";
+import "./style.css";
 
-interface AppProps {}
-interface AppState {
-  name: string;
-}
-
-const App: React.FC<AppProps> = () => {
+const App: React.FC = () => {
   return (
     <div>
       <Editor />
@@ -16,4 +11,4 @@ const App: React.FC<AppProps> = () => {
   );
 };
 
-render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById("root"));

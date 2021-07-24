@@ -1,36 +1,37 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from "react";
+import {ILine} from "./types";
 
-type Props = {
-  line: Line;
+interface IProps {
+  line: ILine;
   onEnterKey: () => void;
-};
+}
 
-const EditorLine: React.FC<Props> = props => {
+const EditorLine: React.FC<IProps> = (props) => {
   const { onEnterKey } = props;
-  const [line, setLine] = useState<Line>(props.line);
+  const [line, setLine] = useState<ILine>(props.line);
   const editor = useRef(null);
 
   useEffect(() => {
     if (editor) {
-      editor.current.focus();
+      (editor.current as unknown as HTMLDivElement)?.focus();
     }
   }, []);
 
   const { lineNumber, lineText } = line;
 
-  const handleKeyPress = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' || event.code === 'Enter') {
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter") {
       event.preventDefault();
       onEnterKey();
     }
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row' }}>
-      <div style={{ flex: '5%', background: 'red' }}>{lineNumber}</div>
+    <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{ flex: "5%", background: "red" }}>{lineNumber}</div>
       <div
-        style={{ flex: '95%' }}
-        contenteditable="true"
+        style={{ flex: "95%" }}
+        contentEditable
         onKeyPress={handleKeyPress}
         ref={editor}
       >
