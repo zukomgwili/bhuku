@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 
-const Editor: React.FC = () => {
-    const [text, setText] = useState<string>("");
+const HTMLEditor: React.FC = () => {
+    const [html, setHtml] = useState<string>("");
     const [lineNumbers, setLineNumbers] = useState<number[]>([]);
 
     const getLineNumbers = (value: string) => {
@@ -9,14 +9,14 @@ const Editor: React.FC = () => {
     };
 
     useEffect(() => {
-        if (text.trim().length === 0) {
+        if (html.trim().length === 0) {
             return;
         }
-        setLineNumbers(getLineNumbers(text));
-    }, [text]);
+        setLineNumbers(getLineNumbers(html));
+    }, [html]);
 
     const handleChange = (event: React.ChangeEvent<HTMLDivElement>) => {
-        setText(event.target.innerText as string);
+        setHtml(event.target.innerText as string);
     };
 
     return (
@@ -40,4 +40,4 @@ const Editor: React.FC = () => {
     );
 };
 
-export default Editor;
+export default HTMLEditor;

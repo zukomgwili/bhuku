@@ -1,12 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
-import Editor from "./Editor";
+import HTMLEditor from "./HTMLEditor";
 import "./style.css";
 
 const App: React.FC = () => {
   return (
     <div>
-      <Editor />
+      <HTMLEditor />
     </div>
   );
 };
